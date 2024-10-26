@@ -61,17 +61,17 @@ public class PlayerFishEventListener implements Listener {
             return;
         }
 
-        int weight_class = (int) (Math.random() * 1000);
+        int weight_class = (int) (Math.random() * 10000);
         int weight_item = (int) (Math.random() * 100);
 
         int item_class_code;
         String[] item_class_names = {"FISH", "COMMON", "RARE", "EPIC", "LEGENDARY","SPECIAL"};
-        if (weight_class < 800) item_class_code = 0; // FISH : 80.0%
-        else if (weight_class < 900) item_class_code = 1; // COMMON : 10.0%
-        else if (weight_class < 990) item_class_code = 2; // RARE : 9.0%
-        else if (weight_class < 997) item_class_code = 3; // EPIC : 0.7%
-        else if (weight_class < 999) item_class_code = 4; // LEGENDARY : 0.2%
-        else item_class_code = 5; // SPECIAL : 0.1%
+        if (weight_class < 8900) item_class_code = 0; // FISH : 89.0% | 80.1%
+        else if (weight_class < 9120) item_class_code = 1; // COMMON : 2.2% | 9.99%
+        else if (weight_class < 9970) item_class_code = 2; // RARE : 8.5% | 8.649%
+        else if (weight_class < 9980) item_class_code = 3; // EPIC : 0.1% | 0.964%
+        else if (weight_class < 9990) item_class_code = 4; // LEGENDARY : 0.1% | 0.1777%
+        else item_class_code = 5; // SPECIAL : 0.1% | 0.1195%
 
         int mainHandLevel = 0, offHandLevel = 0, luckEnchantmentLevel = 0;
         try { mainHandLevel = event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(Enchantment.LUCK_OF_THE_SEA); }
