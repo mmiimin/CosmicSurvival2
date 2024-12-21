@@ -24,17 +24,6 @@ public class Profile implements CommandExecutor, Listener {
     private final String[] catDes_1 = {"§7몬스터를 사냥하여", "§7돌과 광물을 채굴하여", "§7나무를 캐서", "§7농작물을 수확하여", "§7물고기를 잡거나 보물을 낚아"};
     private final Material[] represents = {Material.NETHERITE_SWORD, Material.IRON_PICKAXE, Material.GOLDEN_AXE, Material.STONE_HOE, Material.FISHING_ROD};
 
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
-        if (!(event.getView().getTitle().equals("§0프로필"))) return;
-        event.setCancelled(true);
-        final ItemStack clickedItem = event.getCurrentItem();
-        if (clickedItem == null || clickedItem.getType().isAir()) return;
-        final Player player = (Player) event.getWhoClicked();
-        final int slot = event.getRawSlot();
-
-        if (slot == 8) player.closeInventory();
-    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -77,6 +66,9 @@ public class Profile implements CommandExecutor, Listener {
         inv.setItem(4,playerHead);
 
         inv.setItem(8,createItem(Material.BARRIER,"§c✖ 닫기"));
+        inv.setItem(36,createItem(Material.BOOK,"§b\uD83D\uDCD5 도감"));
+        inv.setItem(0,createItem(Material.IRON_BLOCK,"§a⚔ 스킬"));
+        inv.setItem(44,createItem(Material.CHEST,"§d✨ 치장"));
 
         for (LevelManager.ExpCat category : LevelManager.ExpCat.values()) {
             List<String> users = new ArrayList<>();

@@ -137,7 +137,7 @@ public class PlayerFishEventListener implements Listener {
             stack.setItemStack(infMendEnchantment(new ItemStack(Material.BOW)));
         }
         else if (item_class.equals("SPECIAL") && name_kor.equals("철 장검")) {
-            stack.setItemStack(attributeModifier(new ItemStack(Material.IRON_SWORD),2, EquipmentSlot.HAND,Attribute.PLAYER_ENTITY_INTERACTION_RANGE, AttributeModifier.Operation.ADD_NUMBER));
+            stack.setItemStack(attributeModifier(new ItemStack(Material.IRON_SWORD),2, EquipmentSlot.HAND,Attribute.ENTITY_INTERACTION_RANGE, AttributeModifier.Operation.ADD_NUMBER));
         }
         /*
         else if (item_class.equals("SPECIAL") && name_kor.equals("저중력 부츠")) {
@@ -152,7 +152,7 @@ public class PlayerFishEventListener implements Listener {
         }
         else if (item_class.equals("SPECIAL") && name_kor.equals("자수정 검")) {
             ItemStack item = new ItemStack(Material.AMETHYST_SHARD);
-            stack.setItemStack(attributeModifier(item,8, EquipmentSlot.HAND,Attribute.GENERIC_ATTACK_DAMAGE, AttributeModifier.Operation.ADD_NUMBER));
+            stack.setItemStack(attributeModifier(item,8, EquipmentSlot.HAND,Attribute.ATTACK_DAMAGE, AttributeModifier.Operation.ADD_NUMBER));
             stack.setItemStack(addEnchantment(item,Enchantment.SHARPNESS,6));
         }
         else stack.setItemStack(new ItemStack(Material.valueOf(caught_material_name)));

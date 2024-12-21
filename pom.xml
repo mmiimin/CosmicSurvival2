@@ -6,7 +6,7 @@
 
     <groupId>com.paeng</groupId>
     <artifactId>testing</artifactId>
-    <version>2024.10.25</version>
+    <version>2.0.0-ALPHA</version>
     <packaging>jar</packaging>
 
     <name>testing</name>
@@ -65,15 +65,15 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.21.1-R0.1-SNAPSHOT</version>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.coreprotect</groupId>
             <artifactId>coreprotect</artifactId>
-            <version>23.0</version>
+            <version>23.2</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/CoreProtect-CE-23-0-RC1b.jar</systemPath>
+            <systemPath>${project.basedir}/libs/CoreProtect-Edge-23.2-RC2.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

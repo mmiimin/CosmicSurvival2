@@ -99,6 +99,12 @@ public class LevelManager {
 
     int[] exp_requirements = {10000, 10000, 20000, 20000, 30000, 30000, 40000, 40000, 50000, 50000, 50000};
     public int getExpRequirements(int i) {
+        if (i >= 100) {
+            return 1000000;
+        }
+        if (i >= 60) {
+            return 50000+10000*(i-59);
+        }
         if (i < 10) return exp_requirements[i];
         return exp_requirements[10];
     }

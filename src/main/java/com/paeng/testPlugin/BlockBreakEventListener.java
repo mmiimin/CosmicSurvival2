@@ -16,10 +16,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.coreprotect.CoreProtect;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BlockBreakEventListener implements Listener {
 
-    private ArrayList<Location> recentBlocks = new ArrayList<>();
+    private final ArrayList<Location> recentBlocks = new ArrayList<>();
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
@@ -37,9 +38,25 @@ public class BlockBreakEventListener implements Listener {
         LevelManager manager = new LevelManager();
         TestPlugin pluginInstance = JavaPlugin.getPlugin(TestPlugin.class);
 
+        CollectionManager.CollectionType blockTypeStore = null;
+        double expMultiplier = 1;
+
+        for (CollectionManager.CollectionType blocktype : CollectionManager.CollectionType.values()) {
+
+            List<String> blockList = pluginInstance.getConfig().getStringList("Collection." + blocktype.getCode());
+
+            if (blockList.contains(block.name())) {
+                blockTypeStore = blocktype;
+                //CollectionManager.addExperience(blocktype,player,1);
+                expMultiplier = blocktype.getExpWisdom(CollectionManager.getLevel(blocktype,player));
+            }
+        }
+
         if (block == Material.PUMPKIN || block == Material.MELON) {
-            if (coreProtect.blockLookup(event.getBlock(), 120).isEmpty() && !recentBlocks.contains(event.getBlock().getLocation()))
-                manager.addExp(player, LevelManager.ExpCat.FARMING, pluginInstance.getConfig().getInt("Broken.farming." + block.name()));
+            if (coreProtect.blockLookup(event.getBlock(), 120).isEmpty() && !recentBlocks.contains(event.getBlock().getLocation())) {
+                manager.addExp(player, LevelManager.ExpCat.FARMING, (int) (pluginInstance.getConfig().getInt("Broken.farming." + block.name()) * expMultiplier));
+                CollectionManager.addExperience(blockTypeStore, player, 1);
+            }
             return;
         }
 
@@ -51,14 +68,18 @@ public class BlockBreakEventListener implements Listener {
                 Location location = new Location(event.getBlock().getWorld(), event_location.getBlockX(), height, event_location.getBlockZ());
                 if (location.getBlock().getType() != block || !coreProtect.blockLookup(location.getBlock(), 150).isEmpty()) break;
             }
-            manager.addExp(player, LevelManager.ExpCat.FARMING, (height - event.getBlock().getLocation().getBlockY()) * pluginInstance.getConfig().getInt("Broken.farming." + block.name()));
+            manager.addExp(player, LevelManager.ExpCat.FARMING, (height - event.getBlock().getLocation().getBlockY()) * (int) (pluginInstance.getConfig().getInt("Broken.farming." + block.name())* expMultiplier));
+            CollectionManager.addExperience(blockTypeStore, player, (height - event.getBlock().getLocation().getBlockY()));
             return;
         }
 
         if (block == Material.WHEAT || block == Material.CARROTS || block == Material.POTATOES || block == Material.NETHER_WART) {
             if (!coreProtect.blockLookup(event.getBlock(), 120).isEmpty() || recentBlocks.contains(event.getBlock().getLocation())) return;
             Ageable ageable = (Ageable) event.getBlock().getBlockData();
-            if (ageable.getAge() == ageable.getMaximumAge()) manager.addExp(player, LevelManager.ExpCat.FARMING, pluginInstance.getConfig().getInt("Broken.farming." + block.name()));
+            if (ageable.getAge() == ageable.getMaximumAge())  {
+                manager.addExp(player, LevelManager.ExpCat.FARMING, (int) (pluginInstance.getConfig().getInt("Broken.farming." + block.name())* expMultiplier));
+                CollectionManager.addExperience(blockTypeStore, player, 1);
+            }
             return;
         }
 
@@ -67,7 +88,10 @@ public class BlockBreakEventListener implements Listener {
         if (recentBlocks.contains(event.getBlock().getLocation())) return;
 
         for (LevelManager.ExpCat expcat : LevelManager.ExpCat.values())
-            manager.addExp(player, expcat, pluginInstance.getConfig().getInt("Broken." + expcat.getName() + "." + block.name()));
+            manager.addExp(player, expcat, (int) (pluginInstance.getConfig().getInt("Broken." + expcat.getName() + "." + block.name()) * expMultiplier));
+
+        CollectionManager.addExperience(blockTypeStore, player, 1);
+
     }
 
     private CoreProtectAPI getCoreProtect() {

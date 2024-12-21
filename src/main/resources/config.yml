@@ -2,7 +2,7 @@ Broken:
   combat:
     SPAWNER: 5000
   mining:
-    SAND: 3
+    SAND: 300000
     NETHERRACK: 3
     GRAVEL: 3
     STONE: 5
@@ -36,7 +36,6 @@ Broken:
     NETHER_GOLD_ORE: 37
     GLOWSTONE: 77
     AMETHYST_BLOCK: 13
-    AMETHYST_SHARD: 333
   forage:
     ACACIA_LEAVES: 4
     BIRCH_LEAVES: 4
@@ -352,3 +351,116 @@ Caught:
       weight: 100
       reward: 99999
       name: "철 장검"
+
+
+Collection:
+  0:
+    - OAK_LOG
+    - SPRUCE_LOG
+    - BIRCH_LOG
+  1:
+    - ACACIA_LOG
+    - JUNGLE_LOG
+    - DARK_OAK_LOG
+  2:
+    - CHERRY_LOG
+    - PALE_OAK_LOG
+    - MANGROVE_LOG
+  3:
+    - CRIMSON_STEM
+    - WARPED_STEM
+  4:
+    - STONE
+    - COBBLESTONE
+    - TUFF
+    - CALCITE
+    - OBSIDIAN
+    - DEEPSLATE
+    - COBBLED_DEEPSLATE
+  5:
+    - DIORITE
+    - ANDESITE
+    - GRANITE
+    - SAND
+    - GRAVEL
+  6:
+    - IRON_ORE
+    - DEEPSLATE_IRON_ORE
+    - COAL_ORE
+    - DEEPSLATE_COAL_ORE
+    - COPPER_ORE
+    - DEEPSLATE_COPPER_ORE
+  7:
+    - GOLD_ORE
+    - DEEPSLATE_GOLD_ORE
+  8:
+    - DIAMOND_ORE
+    - DEEPSLATE_DIAMOND_ORE
+  9:
+    - EMERALD_ORE
+    - DEEPSLATE_EMERALD_ORE
+  10:
+    - LAPIS_ORE
+    - DEEPSLATE_LAPIS_ORE
+    - REDSTONE_ORE
+    - DEEPSLATE_REDSTONE_ORE
+  11:
+    - NETHER_QUARTZ_ORE
+  12:
+    - GLOWSTONE
+  13:
+    - ANCIENT_DEBRIS
+  14:
+    - Zombie
+    - Skeleton
+    - Spider
+    - CaveSpider
+    - ZombieVillager
+    - Drowned
+  15:
+    - Creeper
+    - Witch
+    - Slime
+    - Husk
+    - Stray
+  16:
+    - Hoglin
+    - Piglin
+    - PiglinBrute
+    - Zoglin
+  17:
+    - Blaze
+    - WitherSkeleton
+    - MagmaCube
+    - Ghast
+  18:
+    - EnderDragon
+  19:
+    - Evoker
+    - Vex
+    - Ravager
+    - Pillager
+    - Vindicator
+  20:
+    - Warden
+  21:
+    - Guardian
+    - ElderGuardian
+  22:
+    - WHEAT
+  23:
+    - SUGAR_CANE
+  24:
+    - CARROT
+    - POTATOES
+  25:
+    - MELON
+    - PUMPKIN
+  26:
+    - cod
+  27:
+    - tropical_fish
+  28:
+    - rare
+
+

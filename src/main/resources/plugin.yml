@@ -2,7 +2,7 @@ name: TestPlugin
 version: '2024.10'
 authors: [jiwonpaeng, mmiimin]
 main: com.paeng.testPlugin.TestPlugin
-api-version: '1.21.1'
+api-version: '1.21.4'
 depend: [CoreProtect]
 commands:
   menu:
